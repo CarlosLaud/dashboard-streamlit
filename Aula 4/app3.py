@@ -46,7 +46,8 @@ caminho = "https://raw.githubusercontent.com/CarlosLaud/dashboard-streamlit/refs
 df = carregar_dados(caminho)
 
 st.subheader("📊 Quantidades por Segmento")
-st.df['Segmento'].value_counts().reset_index()
+resultado = df['Segmento'].value_counts().reset_index()
+st.dataframe(resultado)
 
 # 🔄 Transformar em formato longo
 df_melted = df.melt(id_vars='Segmento', 
@@ -86,6 +87,7 @@ st.dataframe(df)
 st.subheader("💰 Valor de Mercado por Segmento")
 fig_valor, media_segmento = grafico_valor_mercado(df)
 st.pyplot(fig_valor)
+
 
 
 
