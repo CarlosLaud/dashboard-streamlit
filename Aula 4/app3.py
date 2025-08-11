@@ -42,7 +42,8 @@ st.set_page_config(page_title="Dashboard FII", layout="wide")
 st.title("📈 Dashboard de Fundos Imobiliários")
 
 # 🔄 Carregar dados
-df = carregar_dados("df_novo.csv")
+caminho = "https://raw.githubusercontent.com/CarlosLaud/dashboard-streamlit/refs/heads/main/Aula%204/df_novo.csv"
+df = carregar_dados(caminho)
 
 # 🔄 Transformar em formato longo
 df_melted = df.melt(id_vars='Segmento', 
@@ -82,3 +83,4 @@ st.dataframe(df)
 st.subheader("💰 Valor de Mercado por Segmento")
 fig_valor, media_segmento = grafico_valor_mercado(df)
 st.pyplot(fig_valor)
+
