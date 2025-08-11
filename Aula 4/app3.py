@@ -45,6 +45,9 @@ st.title("📈 Dashboard de Fundos Imobiliários")
 caminho = "https://raw.githubusercontent.com/CarlosLaud/dashboard-streamlit/refs/heads/main/Aula%204/df_novo.csv"
 df = carregar_dados(caminho)
 
+st.subheader("📊 Quantidades por Segmento")
+df_novo['Segmento'].value_counts().reset_index()
+
 # 🔄 Transformar em formato longo
 df_melted = df.melt(id_vars='Segmento', 
                     value_vars=['FFO Yield', 'Dividend Yield'],
@@ -83,4 +86,5 @@ st.dataframe(df)
 st.subheader("💰 Valor de Mercado por Segmento")
 fig_valor, media_segmento = grafico_valor_mercado(df)
 st.pyplot(fig_valor)
+
 
